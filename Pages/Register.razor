@@ -1,0 +1,235 @@
+@page "/register"
+@inject NavigationManager NavigationManager
+
+<div class="register-container">
+    <!-- Abstract Background Decor Shapes -->
+    <div class="shape top-left-triangle"></div>
+    <div class="shape bottom-left-squiggle"></div>
+    <div class="shape top-right-ovals">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="shape bottom-right-sphere"></div>
+
+    <!-- Central Register Card -->
+    <div class="register-card">
+        <div class="avatar-badge">
+            <i class="bi bi-person-fill"></i>
+        </div>
+
+        <h3 class="card-title">REGISTER</h3>
+
+        <EditForm Model="@registerModel" OnValidSubmit="HandleRegister" class="w-100">
+            <DataAnnotationsValidator />
+
+            <div class="mb-3">
+                <InputText class="custom-input" placeholder="Full Name" @bind-Value="registerModel.FullName" />
+                <ValidationMessage For="@(() => registerModel.FullName)" />
+            </div>
+
+            <div class="mb-3">
+                <InputText class="custom-input" placeholder="Email Address" @bind-Value="registerModel.Email" />
+                <ValidationMessage For="@(() => registerModel.Email)" />
+            </div>
+
+            <div class="mb-3">
+                <InputText type="password" class="custom-input" placeholder="Password" @bind-Value="registerModel.Password" />
+                <ValidationMessage For="@(() => registerModel.Password)" />
+            </div>
+
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </EditForm>
+
+        <div class="card-footer-text">
+            <span>Already have an account? </span>
+            <a href="/login" class="login-link">Log In</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Full Page Layout */
+    .register-container {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        background-color: #bcd800; /* Vibrant Lime Green */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Central Card Styling */
+    .register-card {
+        position: relative;
+        z-index: 10;
+        background-color: #ffffff;
+        width: 100%;
+        max-width: 380px;
+        padding: 2.5rem 2rem 2rem 2rem;
+        border-radius: 28px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* User Avatar Badge */
+    .avatar-badge {
+        width: 64px;
+        height: 64px;
+        background-color: #d9e875;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+    }
+
+    .avatar-badge i {
+        font-size: 32px;
+        color: #627200;
+    }
+
+    .card-title {
+        font-weight: 800;
+        font-size: 1rem;
+        color: #333333;
+        letter-spacing: 1.5px;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Pill Input Fields */
+    .custom-input {
+        width: 100%;
+        background-color: #f6f7f9;
+        border: 1px solid #eef0f3;
+        border-radius: 50px;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+        color: #555555;
+        outline: none;
+        transition: all 0.2s ease;
+    }
+
+    .custom-input::placeholder {
+        color: #b0b5be;
+    }
+
+    .custom-input:focus {
+        background-color: #ffffff;
+        border-color: #8da400;
+        box-shadow: 0 0 0 3px rgba(188, 216, 0, 0.25);
+    }
+
+    /* Primary Action Button */
+    .submit-btn {
+        width: 100%;
+        background-color: #8da400;
+        color: #ffffff;
+        border: none;
+        border-radius: 50px;
+        padding: 0.75rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        margin-top: 0.5rem;
+        transition: background-color 0.2s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #798d00;
+    }
+
+    .card-footer-text {
+        font-size: 0.75rem;
+        color: #777777;
+        margin-top: 1.25rem;
+    }
+
+    .login-link {
+        color: #8da400;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    /* Decorative Shapes */
+    .shape {
+        position: absolute;
+        pointer-events: none;
+    }
+
+    /* Top Left Triangle */
+    .top-left-triangle {
+        top: 50px;
+        left: 50px;
+        width: 0;
+        height: 0;
+        border-left: 35px solid transparent;
+        border-right: 35px solid transparent;
+        border-bottom: 50px solid #e2cb83;
+        transform: rotate(-45deg);
+        opacity: 0.85;
+    }
+
+    /* Bottom Left Squiggle */
+    .bottom-left-squiggle {
+        bottom: 40px;
+        left: 50px;
+        width: 25px;
+        height: 160px;
+        background-color: #8da400;
+        border-radius: 20px;
+        box-shadow: inset -4px 0 0 rgba(255, 255, 255, 0.3);
+    }
+
+    /* Top Right Stacked Ovals */
+    .top-right-ovals {
+        top: 30px;
+        right: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .top-right-ovals span {
+        width: 110px;
+        height: 42px;
+        border-radius: 50px;
+    }
+
+    .top-right-ovals span:nth-child(1) { background-color: #5ed2f3; transform: rotate(-10deg); }
+    .top-right-ovals span:nth-child(2) { background-color: #4db3d2; transform: rotate(-8deg); }
+    .top-right-ovals span:nth-child(3) { background-color: #3b9ab8; transform: rotate(-5deg); }
+    .top-right-ovals span:nth-child(4) { background-color: #3488a3; transform: rotate(-3deg); }
+
+    /* Bottom Right Sphere */
+    .bottom-right-sphere {
+        bottom: 50px;
+        right: 120px;
+        width: 45px;
+        height: 45px;
+        background: radial-gradient(circle at 30% 30%, #d4eb36, #7a8f00);
+        border-radius: 50%;
+    }
+</style>
+
+@code {
+    private RegisterModel registerModel = new();
+
+    private void HandleRegister()
+    {
+        NavigationManager.NavigateTo("/login");
+    }
+
+    public class RegisterModel
+    {
+        public string FullName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+}

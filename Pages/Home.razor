@@ -1,0 +1,842 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthStateProvider
+
+<div class="landing-page">
+    <!-- Header / Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <span class="logo-icon"></span>
+                <span class="logo-text">Univents</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#events">Events</a>
+            </nav>
+
+            <div class="auth-buttons">
+                <AuthorizeView>
+                    <Authorized>
+                        <span class="welcome-tag">Hi, @context.User.Identity?.Name</span>
+                        <button class="btn-primary-pill" @onclick="Logout">Log Out</button>
+                    </Authorized>
+                    <NotAuthorized>
+                        <a href="/login" class="nav-link-sign-in">Sign In</a>
+                        <a href="/register" class="btn-primary-pill">Get Started</a>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="shape hero-sphere-top"></div>
+        <div class="shape hero-sphere-bottom"></div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="badge-pill">CAMPUS EVENTS PLATFORM</span>
+                <h1 class="hero-title">Connect, Organize & Celebrate</h1>
+                <p class="hero-description">
+                    Univents brings campus event management, community building, and resource discovery, attendance, and seamless integrations together in one platform.
+                </p>
+                
+                <div class="hero-cta-group">
+                    <a href="/register" class="btn-dark-pill">Start Event</a>
+                    <div class="student-avatars">
+                        <div class="avatar-stack">
+                            <span class="avatar av-1"></span>
+                            <span class="avatar av-2"></span>
+                            <span class="avatar av-3"></span>
+                            <span class="avatar av-4"></span>
+                        </div>
+                        <span class="avatar-text">2,000+ students already enrolled</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Widget Card -->
+            <div class="hero-card-container">
+                <div class="events-widget-card">
+                    <div class="widget-header">
+                        <h5>Upcoming Events</h5>
+                        <a href="#" class="view-all">View all</a>
+                    </div>
+                    
+                    <ul class="event-list">
+                        <li class="event-item">
+                            <span class="event-color lime"></span>
+                            <div class="event-details">
+                                <span class="event-title">Spring Campus Festival</span>
+                                <span class="event-date">Mar 22</span>
+                            </div>
+                            <span class="event-time">2:00 PM</span>
+                        </li>
+                        <li class="event-item">
+                            <span class="event-color blue"></span>
+                            <div class="event-details">
+                                <span class="event-title">Tech Innovation Summit</span>
+                                <span class="event-date">Mar 28</span>
+                            </div>
+                            <span class="event-time">10:00 AM</span>
+                        </li>
+                        <li class="event-item">
+                            <span class="event-color orange"></span>
+                            <div class="event-details">
+                                <span class="event-title">Cultural Night 2026</span>
+                                <span class="event-date">Apr 02</span>
+                            </div>
+                            <span class="event-time">6:00 PM</span>
+                        </li>
+                    </ul>
+
+                    <div class="widget-progress-section">
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 78%;"></div>
+                        </div>
+                        <span class="progress-label">78% RSVPs Filled</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Categories Bar -->
+    <section class="categories-bar">
+        <div class="categories-container">
+            <button class="category-pill active">All Events</button>
+            <button class="category-pill">Academic</button>
+            <button class="category-pill">Social</button>
+            <button class="category-pill">Sports</button>
+            <button class="category-pill">Arts & Culture</button>
+            <button class="category-pill">Career</button>
+            <button class="category-pill">Tech</button>
+            <button class="category-pill">Health & Wellness</button>
+        </div>
+    </section>
+
+    <!-- Features Grid Section -->
+    <section id="features" class="features-section">
+        <div class="section-container">
+            <span class="section-label">FEATURES</span>
+            <h2 class="section-heading">Every campus event,<br />right in your pocket</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-calendar-event"></i></div>
+                    <h3>Event Management</h3>
+                    <p>Create, schedule, and manage campus events with ease. Handle registrations, ticketing, and announcements effortlessly.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-people"></i></div>
+                    <h3>Student Community</h3>
+                    <p>Connect students, faculty, departments, and organizations. Foster engagement and build lasting campus relationships.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-compass"></i></div>
+                    <h3>Campus Resource Hub</h3>
+                    <p>Centralized campus resources, locations, and real-time mapping so users quickly discover and locate what they need.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-lightning-charge"></i></div>
+                    <h3>Launch RSVP</h3>
+                    <p>Streamlined RSVP process for any campus event. Track attendance and send automated reminders to participants.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-bar-chart-line"></i></div>
+                    <h3>Attendance Insights</h3>
+                    <p>Get detailed analytics on event attendance, student engagement, and campus activity trends over time.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-sliders"></i></div>
+                    <h3>Customized Integrations</h3>
+                    <p>Seamlessly integrate with your existing campus portals, LMS platforms, and communication tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3-Step Dark Process Section -->
+    <section class="process-section">
+        <div class="section-container">
+            <span class="process-sublabel">HOW IT WORKS</span>
+            <h2 class="process-heading">Up and running in three steps</h2>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">01</span>
+                    <h4>Discover & Connect</h4>
+                    <p>Browse all campus events, clubs, and organizations. Find what matches your interests and connect with like-minded students instantly.</p>
+                </div>
+
+                <div class="step-card">
+                    <span class="step-number">02</span>
+                    <h4>RSVP & Manage</h4>
+                    <p>Reserve your spot with one tap. Track your schedule, get reminders, and manage all your campus commitments from one dashboard.</p>
+                </div>
+
+                <div class="step-card">
+                    <span class="step-number">03</span>
+                    <h4>Engage & Review</h4>
+                    <p>Attend events, share your experience, and help improve future events through ratings and reviews. Build your campus story.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Callout Banner -->
+    <section class="cta-section">
+        <div class="cta-banner">
+            <div class="shape cta-sphere"></div>
+            <h2>Bring your whole campus together in one place.</h2>
+            <p>Join thousands of students and organizers already using Univents to make campus life more connected and memorable.</p>
+            <a href="/register" class="btn-dark-pill">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-logo mb-2">
+                        <span class="logo-icon"></span>
+                        <span class="logo-text">Univents</span>
+                    </div>
+                    <p class="brand-desc">The all-in-one campus event platform connecting students, organizations, and administrators for better campus experiences.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h6>PRODUCT</h6>
+                    <a href="#">Features</a>
+                    <a href="#">Integrations</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Changelog</a>
+                </div>
+
+                <div class="footer-col">
+                    <h6>COMPANY</h6>
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
+                </div>
+
+                <div class="footer-col">
+                    <h6>LEGAL</h6>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 Univents. All rights reserved.</span>
+                <div class="social-links">
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<style>
+    /* Reset & CSS Variables */
+    :root {
+        --lime-main: #bcd800;
+        --lime-dark: #8da400;
+        --lime-soft: #f1f8b8;
+        --dark-bg: #111315;
+        --card-bg: #ffffff;
+        --text-dark: #18191b;
+        --text-muted: #6b7280;
+        --light-bg: #f9f9f6;
+    }
+
+    .landing-page {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--text-dark);
+        background-color: #ffffff;
+    }
+
+    /* Header Navbar */
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: #ffffff;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 1rem 0;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+    }
+
+    .logo-icon {
+        width: 22px;
+        height: 22px;
+        background-color: var(--lime-main);
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .logo-text {
+        font-weight: 800;
+        font-size: 1.25rem;
+        color: var(--text-dark);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-dark); }
+
+    .auth-buttons {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+    }
+
+    .nav-link-sign-in {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .btn-primary-pill {
+        background-color: var(--lime-main);
+        color: var(--text-dark);
+        border: none;
+        padding: 0.5rem 1.25rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+
+    .btn-primary-pill:hover { background-color: var(--lime-dark); color: #fff; }
+
+    .welcome-tag {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+        background-color: var(--lime-main);
+        padding: 4rem 1.5rem 5rem 1.5rem;
+        overflow: hidden;
+    }
+
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .badge-pill {
+        display: inline-block;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -1px;
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #2b3000;
+        max-width: 520px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-cta-group {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .btn-dark-pill {
+        background-color: var(--text-dark);
+        color: #ffffff;
+        padding: 0.75rem 1.75rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.2s;
+    }
+
+    .btn-dark-pill:hover { background-color: #333; }
+
+    .student-avatars {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .avatar-stack { display: flex; }
+
+    .avatar {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 2px solid var(--lime-main);
+        margin-left: -8px;
+    }
+
+    .avatar:first-child { margin-left: 0; }
+    .av-1 { background-color: #5ed2f3; }
+    .av-2 { background-color: #fca5a5; }
+    .av-3 { background-color: #fde047; }
+    .av-4 { background-color: #86efac; }
+
+    .avatar-text {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #384200;
+    }
+
+    /* Hero Widget Card */
+    .events-widget-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .widget-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.25rem;
+    }
+
+    .widget-header h5 {
+        font-weight: 800;
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    .view-all {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-decoration: none;
+    }
+
+    .event-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.25rem 0;
+    }
+
+    .event-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .event-item:last-child { border-bottom: none; }
+
+    .event-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 4px;
+    }
+
+    .event-color.lime { background-color: var(--lime-main); }
+    .event-color.blue { background-color: #38bdf8; }
+    .event-color.orange { background-color: #fb923c; }
+
+    .event-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .event-title {
+        font-size: 0.85rem;
+        font-weight: 700;
+    }
+
+    .event-date {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+    }
+
+    .event-time {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-muted);
+    }
+
+    .widget-progress-section { margin-top: 0.5rem; }
+
+    .progress-bar-bg {
+        height: 6px;
+        background-color: #e5e7eb;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 0.35rem;
+    }
+
+    .progress-bar-fill {
+        height: 100%;
+        background-color: var(--lime-dark);
+        border-radius: 10px;
+    }
+
+    .progress-label {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        font-weight: 600;
+    }
+
+    /* Category Filter Bar */
+    .categories-bar {
+        border-bottom: 1px solid #eee;
+        padding: 1rem 0;
+        background-color: #fff;
+    }
+
+    .categories-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+    }
+
+    .category-pill {
+        background-color: #f3f4f6;
+        border: none;
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    .category-pill.active {
+        background-color: var(--lime-main);
+        color: var(--text-dark);
+    }
+
+    /* Features Grid */
+    .features-section {
+        padding: 5rem 1.5rem;
+        background-color: #ffffff;
+    }
+
+    .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-label {
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        color: var(--text-muted);
+    }
+
+    .section-heading {
+        font-size: 2.25rem;
+        font-weight: 900;
+        line-height: 1.2;
+        margin: 0.5rem 0 3rem 0;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    .feature-card {
+        background-color: #fbfbf9;
+        border-radius: 16px;
+        padding: 2rem;
+        border: 1px solid #f0f0ed;
+    }
+
+    .feature-icon {
+        width: 38px;
+        height: 38px;
+        background-color: var(--lime-soft);
+        color: var(--lime-dark);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* 3-Step Process Section */
+    .process-section {
+        background-color: var(--dark-bg);
+        color: #ffffff;
+        padding: 5rem 1.5rem;
+    }
+
+    .process-sublabel {
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        color: #888888;
+    }
+
+    .process-heading {
+        font-size: 2.25rem;
+        font-weight: 900;
+        margin: 0.5rem 0 3.5rem 0;
+    }
+
+    .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .step-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #333333;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .step-card h4 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+    }
+
+    .step-card p {
+        font-size: 0.875rem;
+        color: #a0a0a0;
+        line-height: 1.6;
+    }
+
+    /* CTA Banner */
+    .cta-section {
+        padding: 4rem 1.5rem;
+        background-color: #ffffff;
+    }
+
+    .cta-banner {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: var(--lime-main);
+        border-radius: 28px;
+        padding: 3.5rem 2rem;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .cta-banner h2 {
+        font-size: 2rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-banner p {
+        font-size: 0.95rem;
+        color: #333e00;
+        max-width: 500px;
+        margin: 0 auto 1.75rem auto;
+        line-height: 1.5;
+    }
+
+    /* Footer Section */
+    .footer-section {
+        background-color: var(--light-bg);
+        border-top: 1px solid #eaeaea;
+        padding: 4rem 1.5rem 2rem 1.5rem;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3.5rem;
+    }
+
+    .brand-desc {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        max-width: 320px;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .footer-col h6 {
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-col a {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--text-dark); }
+
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #e5e5e5;
+        padding-top: 1.5rem;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1.25rem;
+    }
+
+    .social-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+    }
+
+    /* Background Spheres */
+    .shape {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .hero-sphere-top {
+        top: 20px;
+        left: 320px;
+        width: 30px;
+        height: 30px;
+        background: radial-gradient(circle at 30% 30%, #eefc68, #7a8f00);
+    }
+
+    .hero-sphere-bottom {
+        bottom: 30px;
+        right: 40px;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle at 30% 30%, #eefc68, #7a8f00);
+    }
+
+    .cta-sphere {
+        bottom: -20px;
+        right: -20px;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle at 30% 30%, #eefc68, #7a8f00);
+    }
+
+    @@media (max-width: 768px) {
+        .hero-container { grid-template-columns: 1fr; }
+        .hero-title { font-size: 2.5rem; }
+        .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        .nav-links { display: none; }
+    }
+</style>
+
+@code {
+    private void Logout()
+    {
+        ((CustomAuthStateProvider)AuthStateProvider).MarkUserAsLoggedOut();
+        NavigationManager.NavigateTo("/");
+    }
+}
