@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Univents",
   "resources": {
-    "hash": "sha256-FW1aEyHiqhXXcLT97hqKXHClxCUiqHfyNvqOGAfK2So=",
+    "hash": "sha256-uT7dUTUH1/0xk7zjvS69QowD3tyC7e7BPgrKDwwJpCs=",
     "jsModuleNative": {
       "dotnet.native.8.0.8.93i67mqfmb.js": "sha256-juC5sA7gHTLXFEhAKgdM2/RavswpwCtDfjYGsAz2FXg="
     },
@@ -209,10 +209,10 @@
       "mscorlib.wasm": "sha256-Gz8PyW2/fwihe5ul81OwmRUrU71r+KtbyRw6xlOGD+Q=",
       "netstandard.wasm": "sha256-jMTqIQzoDS810lyhZpMO5eEC36EzntXqSVn+2qwkOMQ=",
       "System.Private.CoreLib.wasm": "sha256-NFj5WE5VLP2LptZIRJCUIc1AMk06FmxpsSILfPISwAw=",
-      "Univents.wasm": "sha256-HGua5J32mw44OnzAZAr3Owo4fd8ZiK9cRxLCfuhoXYA="
+      "Univents.wasm": "sha256-tD3l0ky3PKjG3+PEoFpuuC7wLjWA2OCVdQOag8oEpYQ="
     },
     "pdb": {
-      "Univents.pdb": "sha256-/srIm0oruYBdwzllwDTYROm2doKIZ4xvi5oLw/C4ugc="
+      "Univents.pdb": "sha256-cPccIa6zJng5xzKkNTKefwZ8ObGQP+6k4UqrIYXlDo4="
     }
   },
   "cacheBootResources": true,

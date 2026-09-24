@@ -2,7 +2,8 @@
 module.exports = {
   content: [
     "./src/**/*.{html,js,jsx,ts,tsx}",
-    "./*.html"
+    "./*.html",
+    "./**/*.razor"
   ],
   theme: {
     extend: {},

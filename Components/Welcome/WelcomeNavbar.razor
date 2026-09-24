@@ -1,0 +1,39 @@
+@namespace Univents.Components.Welcome
+
+<nav style="background:#1a1a1a; font-family:'Outfit', sans-serif;" class="sticky top-0 z-50 flex items-center justify-between px-6 py-3">
+    <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black" style="background:#c5e61c; color:#1a1a1a;">
+            U
+        </div>
+        <span class="font-bold text-white text-lg tracking-tight">Univents</span>
+    </div>
+
+    <div class="hidden md:flex items-center gap-6 text-sm" style="color:#999;">
+        <a href="#" class="hover:text-white transition-colors">Discover</a>
+        <a href="#" class="hover:text-white transition-colors">My Events</a>
+        <a href="#" class="hover:text-white transition-colors">Organizations</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+        <button class="relative w-8 h-8 rounded-full flex items-center justify-center transition-colors" style="background:#2a2a2a;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+            @if (NotificationCount > 0)
+            {
+                <span class="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full text-[9px] font-bold flex items-center justify-center" style="background:#c5e61c; color:#1a1a1a;">
+                    @NotificationCount
+                </span>
+            }
+        </button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer" style="background:#c5e61c; color:#1a1a1a;">
+            @Avatar
+        </div>
+    </div>
+</nav>
+
+@code {
+    [Parameter] public string Avatar { get; set; } = "JR";
+    [Parameter] public int NotificationCount { get; set; } = 2;
+}

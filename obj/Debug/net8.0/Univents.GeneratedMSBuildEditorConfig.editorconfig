@@ -26,6 +26,18 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/L23Y16W22/Univents/Components/Welcome/EventCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xXZWxjb21lXEV2ZW50Q2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/L23Y16W22/Univents/Components/Welcome/OrganizationalCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xXZWxjb21lXE9yZ2FuaXphdGlvbmFsQ2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/L23Y16W22/Univents/Components/Welcome/WelcomeNavbar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xXZWxjb21lXFdlbGNvbWVOYXZiYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/L23Y16W22/Univents/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -36,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/L23Y16W22/Univents/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/L23Y16W22/Univents/Pages/Welcome.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VsY29tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/L23Y16W22/Univents/_Imports.razor]

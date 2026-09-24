@@ -1,0 +1,205 @@
+@page "/welcome"
+@using Univents.Models
+@using Univents.Data
+@using Univents.Components.Welcome
+
+<div class="min-h-screen" style="background:#f5f5f0; font-family:'Inter', sans-serif;">
+
+    <WelcomeNavbar Avatar="@avatar" NotificationCount="2" />
+
+    <div class="max-w-6xl mx-auto px-4 py-8 md:px-8">
+
+        <!-- Welcome header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div>
+                <p class="text-sm font-medium mb-1" style="color:#888; font-family:'Outfit', sans-serif;">
+                    @todayLabel
+                </p>
+                <h1 class="text-3xl md:text-4xl font-black leading-tight" style="font-family:'Outfit', sans-serif; color:#1a1a1a;">
+                    Welcome back, <br />
+                    <span style="color:#c5e61c;">@firstName</span> &#128075;
+                </h1>
+            </div>
+
+            @if (WelcomeSeedData.UpcomingRsvp.Count > 0)
+            {
+                <div class="flex flex-col gap-2">
+                    <p class="text-xs font-semibold uppercase tracking-widest" style="color:#888;">Your upcoming RSVPs</p>
+                    @foreach (var r in WelcomeSeedData.UpcomingRsvp)
+                    {
+                        <div class="flex items-center gap-3 rounded-xl px-4 py-2.5" style="background:#1a1a1a;">
+                            <div class="w-1.5 h-8 rounded-full flex-shrink-0" style="background:#c5e61c;"></div>
+                            <div>
+                                <p class="text-sm font-semibold text-white leading-tight" style="font-family:'Outfit', sans-serif;">@r.Title</p>
+                                <p class="text-xs" style="color:#888;">@r.Date &middot; @r.Org</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <!-- Search bar -->
+        <div class="relative mb-6">
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+            </div>
+            <input type="text" placeholder="Search events, orgs, or topics..." value="@searchQuery"
+                   @oninput="OnSearchInput"
+                   class="welcome-search-input w-full pl-12 pr-4 py-4 rounded-2xl text-base outline-none transition-all"
+                   style="background:#ffffff; font-family:'Inter', sans-serif; color:#1a1a1a;" />
+            @if (!string.IsNullOrEmpty(searchQuery))
+            {
+                <button @onclick="ClearSearch" class="absolute inset-y-0 right-4 flex items-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18M6 6l12 12" />
+                    </svg>
+                </button>
+            }
+        </div>
+
+        <!-- Category filters -->
+        <div class="flex gap-2 mb-8 overflow-x-auto scrollbar-hide pb-1">
+            @foreach (var cat in WelcomeSeedData.Categories)
+            {
+                var isActive = activeCategory == cat;
+                <button @onclick="() => SetCategory(cat)"
+                        class="flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all"
+                        style="background:@(isActive ? "#c5e61c" : "#ffffff"); color:@(isActive ? "#1a1a1a" : "#666"); border:2px solid @(isActive ? "#c5e61c" : "#e0e0d8"); font-family:'Outfit', sans-serif;">
+                    @cat
+                </button>
+            }
+        </div>
+
+        <!-- Events section -->
+        <section class="mb-12">
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="text-xl font-black" style="font-family:'Outfit', sans-serif; color:#1a1a1a;">
+                    @(activeCategory == "All Events" ? "Upcoming Events" : activeCategory)
+                    <span class="ml-2 text-sm font-bold px-2 py-0.5 rounded-lg" style="background:#c5e61c; color:#1a1a1a;">
+                        @filteredEvents.Count
+                    </span>
+                </h2>
+                <button class="text-sm font-semibold underline underline-offset-2" style="color:#1a1a1a;">
+                    See all
+                </button>
+            </div>
+
+            @if (filteredEvents.Count == 0)
+            {
+                <div class="text-center py-16 rounded-2xl" style="background:#fff; border:2px dashed #e0e0d8;">
+                    <p class="text-4xl mb-3">&#128269;</p>
+                    <p class="font-semibold text-lg" style="font-family:'Outfit', sans-serif;">No events found</p>
+                    <p class="text-sm mt-1" style="color:#888;">Try a different category or search term</p>
+                </div>
+            }
+            else
+            {
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    @foreach (var ev in filteredEvents)
+                    {
+                        <EventCard Event="ev" IsSaved="savedEvents.Contains(ev.Id)" OnToggleSave="ToggleSave" />
+                    }
+                </div>
+            }
+        </section>
+
+        <!-- Organizations section -->
+        <section>
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="text-xl font-black" style="font-family:'Outfit', sans-serif; color:#1a1a1a;">
+                    Organizations
+                </h2>
+                <button class="text-sm font-semibold underline underline-offset-2" style="color:#1a1a1a;">
+                    Browse all
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach (var org in WelcomeSeedData.Organizations)
+                {
+                    <OrganizationCard Org="org" IsJoined="joinedOrgs.Contains(org.Id)" OnToggleJoin="ToggleJoin" />
+                }
+            </div>
+        </section>
+
+        <!-- Bottom CTA banner -->
+        <div class="mt-12 rounded-3xl px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-6" style="background:#1a1a1a;">
+            <div>
+                <h3 class="text-2xl font-black text-white" style="font-family:'Outfit', sans-serif;">
+                    Hosting an event?
+                </h3>
+                <p class="text-sm mt-1" style="color:#888;">
+                    Create and manage your org's events in minutes.
+                </p>
+            </div>
+            <button class="flex-shrink-0 px-6 py-3 rounded-xl font-bold text-sm transition-transform hover:scale-105" style="background:#c5e61c; color:#1a1a1a; font-family:'Outfit', sans-serif;">
+                Create an Event &rarr;
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Pseudo-class states that inline styles can't express, kept 1:1 with the Figma source's onFocus/onBlur handlers */
+    .welcome-search-input {
+        border: 2px solid #e0e0d8;
+    }
+
+    .welcome-search-input:focus {
+        border-color: #c5e61c;
+    }
+</style>
+
+@code {
+    private string activeCategory = "All Events";
+    private string searchQuery = string.Empty;
+    private readonly HashSet<int> savedEvents = new();
+    private readonly HashSet<int> joinedOrgs = new(WelcomeSeedData.DefaultJoinedOrgs);
+
+    private string firstName = "Jordan";
+    private string avatar = "JR";
+    private string todayLabel = DateTime.Now.ToString("dddd, MMMM d");
+
+    private List<EventItem> filteredEvents => WelcomeSeedData.Events.Where(e =>
+        (activeCategory == "All Events" || e.Category == activeCategory) &&
+        (string.IsNullOrEmpty(searchQuery) ||
+            e.Title.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+            e.Org.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+    ).ToList();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var name = authState.User.Identity?.Name;
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            firstName = name.Split(' ')[0];
+            var parts = name.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            avatar = parts.Length > 1
+                ? $"{parts[0][0]}{parts[^1][0]}".ToUpper()
+                : name.Substring(0, Math.Min(2, name.Length)).ToUpper();
+        }
+    }
+
+    [Inject] private AuthenticationStateProvider AuthStateProvider { get; set; } = default!;
+
+    private void SetCategory(string cat) => activeCategory = cat;
+
+    private void OnSearchInput(ChangeEventArgs e) => searchQuery = e.Value?.ToString() ?? string.Empty;
+
+    private void ClearSearch() => searchQuery = string.Empty;
+
+    private void ToggleSave(int id)
+    {
+        if (!savedEvents.Add(id)) savedEvents.Remove(id);
+    }
+
+    private void ToggleJoin(int id)
+    {
+        if (!joinedOrgs.Add(id)) joinedOrgs.Remove(id);
+    }
+}

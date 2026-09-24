@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "J5zmFUVxQ8iCIyCM35SyKxtSDpwparAGs1bfT6V4pwk=",
+  "Hash": "Xogc01QQ4SYByERfTqvZEhB8ggMt1q2UxQz1SMbbaS8=",
   "Source": "Univents",
   "BasePath": "/",
   "Mode": "Root",
@@ -7900,6 +7900,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Identity": "C:\\Users\\L23Y16W22\\Univents\\wwwroot\\dist\\output.css",
+      "SourceId": "Univents",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\L23Y16W22\\Univents\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "dist/output.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\output.css"
     },
     {
       "Identity": "C:\\Users\\L23Y16W22\\Univents\\wwwroot\\favicon.png",

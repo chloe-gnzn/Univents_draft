@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
+      "Id": "C:\\Users\\L23Y16W22\\Univents\\wwwroot\\dist\\output.css",
+      "PackagePath": "staticwebassets\\dist\\output.css"
+    },
+    {
       "Id": "C:\\Users\\L23Y16W22\\Univents\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
