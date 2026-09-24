@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Univents")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d03abf11220e65377f76af92d1b7e5f46490aa09")]
 [assembly: System.Reflection.AssemblyProductAttribute("Univents")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Univents")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

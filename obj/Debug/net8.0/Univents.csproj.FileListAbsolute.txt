@@ -1034,3 +1034,6 @@ C:\Users\L23Y16W22\Univents\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNet
 C:\Users\L23Y16W22\Univents\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Authorization.dll
 C:\Users\L23Y16W22\Univents\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.Authorization.wasm
 C:\Users\L23Y16W22\Univents\obj\Debug\net8.0\compressed\xwouq042ov.gz
+C:\Users\L23Y16W22\Univents\obj\Debug\net8.0\Univents.sourcelink.json
+C:\Users\L23Y16W22\Univents\bin\Debug\net8.0\package-lock.json
+C:\Users\L23Y16W22\Univents\bin\Debug\net8.0\package.json
