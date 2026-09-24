@@ -5,7 +5,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Tailwind CSS compiled output
-wwwroot/dist/
+# wwwroot/dist/
 
 # .NET / C# Build output & caches
 bin/

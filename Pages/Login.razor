@@ -134,11 +134,18 @@
         font-size: 0.9rem;
         cursor: pointer;
         margin-top: 0.5rem;
-        transition: background-color 0.2s ease;
+        transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
     }
 
     .submit-btn:hover {
         background-color: #798d00;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(141, 164, 0, 0.35);
+    }
+
+    .submit-btn:active {
+        transform: translateY(0) scale(0.97);
+        box-shadow: 0 2px 6px rgba(141, 164, 0, 0.3);
     }
 
     .card-footer-text {
@@ -222,7 +229,7 @@
         if (!string.IsNullOrWhiteSpace(loginModel.Username))
         {
             ((CustomAuthStateProvider)AuthStateProvider).MarkUserAsAuthenticated(loginModel.Username);
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/welcome");
         }
     }
 
